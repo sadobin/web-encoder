@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> {{ title }} </title>
+</head>
+<body>
+    
+    <h1 class="display-2 text-center mt-5 mb-3"> Encoder </h1>
+
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <table class="mx-auto p-15">
+
+                <tr>
+                    <td colspan="2"> 
+                        <textarea type="text" name="string" placeholder="String" cols="50" rows="8" required></textarea> 
+                    </td>
+                </tr>
+
+                <tr class="text-left">
+                    <td> <label for="characters" class="h4 mt-3">Characters </label> </td>
+                    <td>
+                        <select name="chars" id="characters" class="w-100 mt-3" required>
+                            <option value="" selected  hidden> Select an Option </option>
+                            <option value="all_chars">All Characters</option>
+                            <option value="desired_chars">Desired Characters</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="hidden" name="desired_chars" id="desired_chars" 
+                        class="mt-3 w-100" placeholder="Desired Characters">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" > 
+                        <input type="submit" value="Encode" class="btn btn-primary btn-block mt-4 w-100"> 
+                    </td>
+                </tr>
+
+
+            </table>
+
+        </form>
+    </div>
+
+    <script>
+        var chars = document.getElementById("characters");
+
+        chars.addEventListener('change', ()=> {
+            let desired_chars = document.getElementById("desired_chars");
+
+            chars.value == 'desired_chars' 
+            ? (desired_chars.type = 'text') 
+            : (desired_chars.type = 'hidden');
+
+            console.log(chars.value);
+        });
+    </script>
+
+</body>
+</html>
