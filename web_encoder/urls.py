@@ -18,5 +18,5 @@ from encoder import views
 
 urlpatterns = [
     path('', views.homepage, name="encoder_homepage"),
-    path('result', views.result, name="encoder_result"),
+    path('result/', views.result, name="encoder_result"),
 ]
